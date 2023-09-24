@@ -22,6 +22,7 @@ interface FetchGameResponse {
 const useGame = () => {
   const [games, setGames] = useState<Game[]>([]);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   // When we visit a page and initiate a API request but we move to next page,
   // API still waiting for response so in this case we need to cancel this 
@@ -29,18 +30,23 @@ const useGame = () => {
   useEffect(() => {
     const controller = new AbortController();
    
+    setIsLoading(true)
     apiClient
       .get<FetchGameResponse>("/games", { signal: controller.signal })
-      .then((res) => setGames(res.data.results))
+      .then((res) => {
+        setGames(res.data.results)
+        setIsLoading(false);
+      })
       .catch((err) => { 
         if (err instanceof CanceledError) return;
-        setError(err.message) 
+        setError(err.message);
+        setIsLoading(false);
       });
 
       return () => controller.abort();
   }, []);
 
-  return { games, error }
+  return { games, error, isLoading }
 }
 
 export default useGame;
