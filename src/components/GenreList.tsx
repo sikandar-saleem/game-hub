@@ -2,7 +2,7 @@ import { Text } from "@chakra-ui/react";
 import useGenre from "../hooks/useGenre";
 
 export default function GenreList() {
-  const { genres, error, isLoading } = useGenre();
+  const { data: genres, error, isLoading } = useGenre();
 
   return (
     <>
