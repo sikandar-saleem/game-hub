@@ -10,7 +10,9 @@ export default function PlatformSelector({
   onSelectPlatform,
   selectedPlatform,
 }: Props) {
-  const { data: platforms } = usePlatform();
+  const { data: platforms, error } = usePlatform();
+
+  if (error) return null;
 
   return (
     <Menu>
