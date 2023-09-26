@@ -12,7 +12,9 @@ export default function ColorModeSwitch() {
         onChange={toggleColorMode}
         colorScheme="green"
       />
-      <Text>{colorMode === "light" ? "Dark" : "Light"} Mode</Text>
+      <Text whiteSpace="nowrap">
+        {colorMode === "light" ? "Dark" : "Light"} Mode
+      </Text>
     </HStack>
   );
 }
