@@ -16,9 +16,10 @@ const useGame = (
   '/games',
   {
     params: {
-      genre: gameQuery.genre?.id,
-      platform: gameQuery.platform?.id,
-      ordering: gameQuery.sortFilter
+      genres: gameQuery.genre?.id,
+      platforms: gameQuery.platform?.id,
+      ordering: gameQuery.sortFilter,
+      search: gameQuery.searchText
     }
   },
   [gameQuery]
