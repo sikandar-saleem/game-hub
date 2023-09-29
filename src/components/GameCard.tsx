@@ -13,7 +13,6 @@ export default function GameCard({ game }: Props) {
     <Card>
       <Image height={300} src={getCroppedImageUrl(game.background_image)} />
       <CardBody>
-        <Heading fontSize={"2xl"}>{game.name}</Heading>
         <HStack justifyContent="space-between">
           <PlatformIconList
             // This simple mapping return array of platform objects
@@ -21,6 +20,9 @@ export default function GameCard({ game }: Props) {
           />
           <CriticScore score={game.metacritic} />
         </HStack>
+        <Heading fontSize={"2xl"} marginTop="6px">
+          {game.name}
+        </Heading>
       </CardBody>
     </Card>
   );
