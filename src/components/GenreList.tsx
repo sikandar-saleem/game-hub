@@ -1,6 +1,7 @@
 import {
   Button,
   HStack,
+  Heading,
   Image,
   List,
   ListItem,
@@ -23,6 +24,9 @@ export default function GenreList({ onSelectGenre, selectedGenre }: Props) {
   return (
     <>
       {error && <Text>{error}</Text>}
+      <Heading fontSize="2xl" marginBottom="3px">
+        Genres
+      </Heading>
       <List>
         {genres.map((genre) => (
           <ListItem key={genre.id} paddingY="5px">
@@ -30,6 +34,7 @@ export default function GenreList({ onSelectGenre, selectedGenre }: Props) {
               <Image
                 boxSize="32px"
                 borderRadius="8px"
+                objectFit="cover"
                 src={genre.image_background}
               />
               <Button
